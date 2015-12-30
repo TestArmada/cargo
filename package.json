@@ -1,6 +1,6 @@
 {
   "name": "dpro",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "data provider for testarmada test",
   "main": "dpro.js",
   "contributors": [{
