@@ -1,0 +1,16 @@
+{
+  "name": "dpro",
+  "version": "0.0.1",
+  "description": "data provider for testarmada test",
+  "main": "dpro.js",
+  "contributors": [{
+    "name": "Lei Zhu",
+    "url": "https://github.com/archlichking"
+  }],
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "cli-color": "^0.3.2",
+    "yargs": "1.3.2"
+  }
+}
