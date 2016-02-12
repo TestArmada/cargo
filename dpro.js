@@ -1,8 +1,10 @@
+"use strict";
+
 var path = require("path"),
   clc = require("cli-color"),
   _ = require("lodash");
 
-var DPRO_ENV = process.env.DPRO;
+var DPRO_ENV = process.env.DPRO || "default.js";
 var DPRO_INST = process.env.DPRO_INST;
 var DPRO_LOCATION = process.env.DPRO_LOCATION || "./conf/data/";
 
@@ -22,6 +24,7 @@ var DPro = function DPro() {
   // init
   var envData = {};
   var instanceData = {};
+  var filename;
 
   try {
     // load envData
@@ -55,7 +58,7 @@ var DPro = function DPro() {
   });
 
   console.log(clc.blueBright("[INFO]: loaded data file " + filename + ".js"));
-  return data
+  return data;
 };
 
 module.exports = new DPro();
