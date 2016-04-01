@@ -47,8 +47,8 @@ var DPro = function DPro() {
       filename = pinstance;
     } catch (e) {
       // if error happens, log it out only
-      console.warn(clc.yellowBright("[WARN]: data file (" + DPRO_ENV + "-" + DPRO_INST + ".js) failed in loading " + e));
-      console.log(clc.blueBright("[INFO]: use data file " + filename + ".js only"));
+      console.warn(clc.yellowBright("[WARN]: data file (" + DPRO_ENV + "-" + DPRO_INST + ") failed in loading " + e));
+      console.log(clc.blueBright("[INFO]: use data file " + filename + " only"));
     }
   }
 
@@ -57,7 +57,7 @@ var DPro = function DPro() {
     return _.isUndefined(env) ? inst : env;
   });
 
-  console.log(clc.blueBright("[INFO]: loaded data file " + filename + ".js"));
+  console.log(clc.blueBright("[INFO]: loaded data file " + filename));
   return data;
 };
 
