@@ -1,22 +1,27 @@
-#### Data provider for testarmada
-##### file format 
+# Data provider for testarmada
+
+[![Build Status](https://api.travis-ci.org/TestArmada/dpro.svg?branch=master)](https://travis-ci.org/TestArmada/dpro)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![codecov](https://codecov.io/gh/TestArmada/dpro/branch/master/graph/badge.svg)](https://codecov.io/gh/TestArmada/dpro)
+
+## file format 
 Provider should only support `.js`. `.js` support is to allow user generate some random data on the fly, like user registration scenario that requires fresh email account every time.
 
 Each `.js` data file should return a json object.
-##### supported files
+## supported files
 ```
    ${DPRO}.js          : main test data
    ${DPRO_INST}.js : (optional) extra data that only applies to certain instance
 ```
-##### default file location
+## default file location
 ```bash
   ${REPO_ROOT}/config/data
 
   # file location can be changed by using
   ${DPRO_LOCATION}
 ```
-##### file loading rules
-###### basic
+## file loading rules
+### basic
 ```bash
  # to only load from ${REPO_ROOT}/config/data/local.js
  DPRO=local ./node_modules/.bin/magellan --test xxxxx ......
@@ -24,7 +29,7 @@ Each `.js` data file should return a json object.
  # to only load from ${REPO_ROOT}/config/data/prod-a.js
  DPRO=prod-a ./node_modules/.bin/magellan --test xxxxx ......
 ``` 
-###### advantage
+### advantage
 ```bash
  # change file location to ${REPO_ROOT}/config/staging.js
  DPRO_LOCATION="./config/" DPRO=staging ./node_modules/.bin/magellan --test xxxxx ......
@@ -34,7 +39,7 @@ Each `.js` data file should return a json object.
  DPRO=staging DPRO_INST=2 ./node_modules/.bin/magellan --test xxxxx ......
 ```
 
-##### usage
+## usage
 ```javascript
  /** data file
  *{
