@@ -5,15 +5,6 @@ import _ from "lodash";
 import path from "path";
 
 import provideData from "../dpro";
-import logger from "../logger";
-
-// eat console logs
-logger.output = {
-  log() { },
-  error() { },
-  debug() { },
-  warn() { }
-};
 
 const expect = chai.expect;
 const assert = chai.assert;
@@ -23,9 +14,9 @@ describe("DPRO", () => {
 
   beforeEach(() => {
     config = {
-      dpro_env: null,
-      dpro_inst: null,
-      dpro_location: "./dist/test/data"
+      dproEnv: null,
+      dproInst: null,
+      dproLocation: "./dist/test/data"
     };
   });
 
@@ -37,7 +28,7 @@ describe("DPRO", () => {
   });
 
   it("Pass default DPRO_ENV explicitly", () => {
-    config.dpro_env = "default";
+    config.dproEnv = "default";
     let dpro = provideData(config, true);
     expect(dpro.temconfigstr).to.equal("default");
     expect(dpro.temconfigint).to.equal(1);
@@ -45,7 +36,7 @@ describe("DPRO", () => {
   });
 
   it("Change DPRO_ENV", () => {
-    config.dpro_env = "d.js";
+    config.dproEnv = "d.js";
     let dpro = provideData(config, true);
     expect(dpro.temconfigstr).to.equal("notdefault");
     expect(dpro.temconfigint).to.equal(1);
@@ -53,14 +44,14 @@ describe("DPRO", () => {
   });
 
   it("Return empty object if DPRO_LOCATION isn't correct", () => {
-    config.dpro_location = "./doesntexist";
+    config.dproLocation = "./doesntexist";
     let dpro = provideData(config, true);
     expect(dpro).to.eql({});
   });
 
   it("Use instance DPRO_INST", () => {
-    config.dpro_env = "d";
-    config.dpro_inst = "qa1";
+    config.dproEnv = "d";
+    config.dproInst = "qa1";
     let dpro = provideData(config, true);
     expect(dpro.temconfigstr).to.equal("notdefault");
     expect(dpro.temconfigint).to.equal(2);
@@ -69,8 +60,8 @@ describe("DPRO", () => {
   });
 
   it("Read DPRO_ENV only if DPRO_INST isn't correct", () => {
-    config.dpro_env = "d";
-    config.dpro_inst = "nonexist";
+    config.dproEnv = "d";
+    config.dproInst = "nonexist";
     let dpro = provideData(config, true);
 
     expect(dpro.temconfigstr).to.equal("notdefault");
